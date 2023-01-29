@@ -1,0 +1,10 @@
+--- arch/riscv/include/asm/unistd.h	2022-11-21 12:12:53.908107383 +0800
++++ arch/riscv/include/asm/unistd.h	2022-11-21 12:12:53.916107295 +0800
+@@ -34,5 +34,7 @@
+ #define SYSCALL_MBOX_RECV 55
+ #define SYSCALL_SHM_GET 56
+ #define SYSCALL_SHM_DT 57
++#define SYSCALL_NET_SEND 63
++#define SYSCALL_NET_RECV 64
+ 
+ #endif

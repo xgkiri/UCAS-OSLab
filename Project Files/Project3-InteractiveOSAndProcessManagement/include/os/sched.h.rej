@@ -1,0 +1,20 @@
+--- include/os/sched.h	2022-10-15 22:50:09.564565164 +0800
++++ include/os/sched.h	2022-10-15 22:50:09.568565138 +0800
+@@ -111,4 +114,17 @@ void do_sleep(uint32_t);
+ void do_block(list_node_t *, list_head *queue);
+ void do_unblock(list_node_t *);
+ 
++/* TODO [P3-TASK1] exec exit kill waitpid ps*/
++#ifdef S_CORE
++extern pid_t do_exec(int id, int argc, uint64_t arg0, uint64_t arg1, uint64_t arg2);
++#else
++extern pid_t do_exec(char *name, int argc, char *argv[]);
++#endif
++extern void do_exit(void);
++extern int do_kill(pid_t pid);
++extern int do_waitpid(pid_t pid);
++extern void do_process_show();
++extern pid_t do_getpid();
++
++
+ #endif

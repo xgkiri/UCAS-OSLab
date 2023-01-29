@@ -1,0 +1,2 @@
+1. data支持删除操作
+2. sector alloc支持大文件（num > 8）

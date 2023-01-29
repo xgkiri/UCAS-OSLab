@@ -1,0 +1,13 @@
+--- init/main.c	2022-11-21 12:12:53.908107383 +0800
++++ init/main.c	2022-11-21 12:12:53.916107295 +0800
+@@ -36,8 +36,10 @@
+ #include <os/string.h>
+ #include <os/mm.h>
+ #include <os/time.h>
++#include <os/ioremap.h>
+ #include <sys/syscall.h>
+ #include <screen.h>
++#include <e1000.h>
+ #include <printk.h>
+ #include <assert.h>
+ #include <type.h>

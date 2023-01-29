@@ -1,0 +1,66 @@
+#include <asm.h>
+#define KERNEL_STACK		0x50500000
+
+.section ".entry_function","ax"
+.equ task_num_addr, 0x502001f4
+.equ task_start_addr, 0x52000000
+.equ kernel, 0x50201000
+
+ENTRY(_start)
+
+    /* TODO: [p1-task3] setup C runtime environment for the user program */
+  la t1, __bss_start
+  la t2, __BSS_END__
+
+L1:
+  bgeu t1, t2, L2
+  sw x0, (t1)
+  addi t1, t1, 4
+  j L1
+
+L2:
+/*
+  //get task number
+  la a2, task_num_addr
+	lh a3, (a2)
+
+  lui a1, %hi(task_start_addr)
+	addi a1, a1, %lo(task_start_addr)
+	li a4, 0x10000
+
+L3:
+	add a1, a1, a4
+	sub a3, a3, a2
+	bgtz a3, L3
+  add a1, a1, a4
+
+  //save stack in a2
+  add a2, x0, sp
+
+  //set stack for task
+  add sp, x0, a1
+*/
+    /* TODO: [p1-task3] enter main function */
+  call main
+
+    /* TODO: [p1-task3] finish task and return to the kernel */
+  //reset stack
+  //add sp, x0, a2
+
+  //return to kernel
+  
+  /*
+  la a1, kernel
+	jr a1
+  */
+
+    /* NOTE: You need to replace this with new mechanism in p3-task2! */
+
+    /* TODO: [P3] call sys_exit */
+  call sys_exit
+// while(1) loop, unreachable here
+loop:
+    wfi
+    j loop
+
+END(_start)

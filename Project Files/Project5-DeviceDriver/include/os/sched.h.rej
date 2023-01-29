@@ -1,0 +1,12 @@
+--- include/os/sched.h	2022-11-07 13:24:40.389103356 +0800
++++ include/os/sched.h	2022-11-07 13:24:40.401103646 +0800
+@@ -75,6 +75,9 @@ typedef struct pcb
+     list_node_t list;
+     list_head wait_list;
+ 
++    /* pgdir */
++    uintptr_t pgdir;
++
+     /* process id */
+     pid_t pid;
+ 
